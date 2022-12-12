@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible name + aria-expanded puppeteer bug</title>
+
+  <style>
+    [aria-expanded="false"] + * {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Accessible name + aria-expanded puppeteer bug</h1>
+
+  <p>
+    This is a test page for a minimal reproduction of an issue where the accessible name of an element with `aria-expanded`
+    is not immediately accessible after it gets updated on click. 
+  </p>
+
+  <button hidden>Show</button>
+  <p>Some content</p>
+
+  <script>
+    const button = document.querySelector('button');
+    button.removeAttribute('hidden')
+    button.setAttribute('aria-expanded', 'false');
+    button.addEventListener('click', function() {
+      button.setAttribute('aria-expanded', button.getAttribute('aria-expanded') !== 'true')
+      if (button.getAttribute('aria-expanded') == 'true') {
+        button.textContent = 'Hide'
+      } else {
+        button.textContent = 'Show'
+      }
+    })
+  </script>
+</body>
+</html>

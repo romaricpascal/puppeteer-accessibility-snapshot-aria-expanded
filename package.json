@@ -1,0 +1,14 @@
+{
+  "name": "puppeteer-accessible-name",
+  "version": "0.1.0",
+  "description": "Minimum reproduction of puppeteer's delay in accessible name update",
+  "main": "index.js",
+  "author": "Romaric Pascal <hello@romaricpascal.is>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "puppeteer": "^19.4.0"
+  }
+}
